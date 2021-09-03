@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
-function hi(params) {
-  return <p>hi</p>;
+function Hi() {
+  return <p>hi world</p>;
 }
 render(<Hi />, document.getElementById("app"));
