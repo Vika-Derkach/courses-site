@@ -20,21 +20,7 @@ class CoursesPage extends Component {
       });
     }
   }
-  // state = {
-  //   course: {
-  //     title: "",
-  //   },
-  // };
-  //
-  // handleChange = (event) => {
-  //   const course = { ...this.state.course, title: event.target.value };
-  //   this.setState({ course });
-  // };
-  // handleSubmit = (event) => {
-  //   event.preventDefault();
-  //
-  //   this.props.actions.createCourse(this.state.course);
-  // };
+
   render() {
     return (
       <>
