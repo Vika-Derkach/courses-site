@@ -1,12 +1,10 @@
-import * as types from "./actionTypes";
 import * as courseApi from "../../api/courseApi";
+import * as types from "./actionTypes";
 
 export function loadCourseSuccess(courses) {
-  return {
-    type: types.LOAD_COURSES_SUCCESS,
-    courses,
-  };
+  return { type: types.LOAD_COURSES_SUCCESS, courses };
 }
+
 export function createCourseSuccess(course) {
   return { type: types.CREATE_COURSE_SUCCESS, course };
 }
@@ -14,23 +12,26 @@ export function createCourseSuccess(course) {
 export function updateCourseSuccess(course) {
   return { type: types.UPDATE_COURSE_SUCCESS, course };
 }
+
 export function loadCourses() {
-  return function (dipatch) {
+  return function (dispatch) {
     return courseApi
       .getCourses()
       .then((courses) => {
-        dipatch(loadCourseSuccess(courses));
+        dispatch(loadCourseSuccess(courses));
       })
       .catch((error) => {
         throw error;
       });
   };
 }
+
 export function saveCourse(course) {
-  return function (dispatch) {
+  //eslint-disable-next-line no-unused-vars
+  return function (dispatch, getState) {
     return courseApi
       .saveCourse(course)
-      .then((savedCourse, getState) => {
+      .then((savedCourse) => {
         course.id
           ? dispatch(updateCourseSuccess(savedCourse))
           : dispatch(createCourseSuccess(savedCourse));

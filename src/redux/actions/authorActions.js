@@ -1,21 +1,18 @@
 import * as types from "./actionTypes";
 import * as authorApi from "../../api/authorApi";
-import { getAuthors } from "../../api/authorApi";
 
 export function loadAuthorsSuccess(authors) {
-  return {
-    type: types.LOAD_AUTHORS_SUCCESS,
-    authors,
-  };
+  return { type: types.LOAD_AUTHORS_SUCCESS, authors };
 }
+
 export function loadAuthors() {
-  return function (dipatch) {
+  return function(dispatch) {
     return authorApi
       .getAuthors()
-      .then((authors) => {
-        dipatch(loadAuthorsSuccess(authors));
+      .then(authors => {
+        dispatch(loadAuthorsSuccess(authors));
       })
-      .catch((error) => {
+      .catch(error => {
         throw error;
       });
   };
